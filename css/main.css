@@ -1,0 +1,24 @@
+.caption{
+    width: 80%;
+    bottom: 25px;
+}
+.lightbox-container{
+    background-color: rgba(0, 0, 0, 0.427);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.lightbox-inner{
+    /* background-image: url(../images/portfolio-3.jpg); */
+    width: 80%;
+    height: 70vh;
+    background-size:cover;
+}
+.lightbox-inner i{
+    font-size: 1.5625rem;
+}
+.lightbox-inner i.fa-circle-xmark{
+    top: 15px;
+    right: 20px;
+}
