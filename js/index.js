@@ -13,7 +13,7 @@ const btnNext = document.getElementById("next");
 for (let i = 0; i < imags.length; i++) {
     imags[i].addEventListener("click", function (e) {
         lightboxContainer.classList.replace("d-none", "d-flex");
-        lightboxInner.style.setProperty("background-image", `url(.${this.getAttribute("src")})`);
+        lightboxInner.style.setProperty("background-image", `url(${this.getAttribute("src")})`);
         currentIndex = imags.indexOf(this);
     })
 }
@@ -26,7 +26,7 @@ function changeSlide(step) {
     if (currentIndex == -1) {
         currentIndex = (imags.length) - 1;
     }
-    lightboxInner.style.setProperty("background-image", `url(.${imags[currentIndex].getAttribute("src")})`);
+    lightboxInner.style.setProperty("background-image", `url(${imags[currentIndex].getAttribute("src")})`);
 }
 
 function close() {
