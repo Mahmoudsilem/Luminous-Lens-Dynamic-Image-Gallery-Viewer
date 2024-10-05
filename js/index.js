@@ -3,18 +3,20 @@
 const lightboxContainer = document.querySelector(".lightbox-container");
 const lightboxInner = document.querySelector(".lightbox-inner");
 const imags = Array.from(document.querySelectorAll(".item img"));
+const galleryItems = document.getElementById("galleryItems")
 
 let currentIndex;
 const btnClose = document.getElementById("close");
 
 
-for (let i = 0; i < imags.length; i++) {
-    imags[i].addEventListener("click", function (e) {
+galleryItems.addEventListener("click", function(e){
+    const item = e.target.closest(".item"); 
+    if(item){
         lightboxContainer.classList.replace("d-none", "d-flex");
-        lightboxInner.style.setProperty("background-image", `url(${this.getAttribute("src")})`);
-        currentIndex = imags.indexOf(this);
-    })
-}
+        lightboxInner.style.setProperty("background-image", `url(${item.querySelector("img").getAttribute("src")})`);
+        currentIndex = +item.dataset.imgIndex;
+    }
+})
 
 function changeSlide(step) {
     currentIndex = currentIndex + step
