@@ -5,9 +5,7 @@ const lightboxInner = document.querySelector(".lightbox-inner");
 const imags = Array.from(document.querySelectorAll(".item img"));
 
 let currentIndex;
-const btnPrve = document.getElementById("prv");
 const btnClose = document.getElementById("close");
-const btnNext = document.getElementById("next");
 
 
 for (let i = 0; i < imags.length; i++) {
@@ -33,16 +31,22 @@ function close() {
     lightboxContainer.classList.replace("d-flex", "d-none");
 }
 
+lightboxContainer.addEventListener("click", function(e){
+    if(e.target == btnClose.nextElementSibling){
+        changeSlide(1); 
+    }else if(e.target == btnClose.previousElementSibling){
+        changeSlide(-1)
+    }else if(e.target == btnClose || lightboxContainer){
+        close();
+    }    
+})
 
-btnNext.addEventListener("click", function () {
-    changeSlide(1);
-});
-btnPrve.addEventListener("click", function () {
-    changeSlide(-1)
-});
-btnClose.addEventListener("click", close);
-lightboxContainer.addEventListener("click", close);
-
-lightboxInner.addEventListener("click", function (e) {
-    e.stopPropagation();
-});
+document.addEventListener("keyup", function(e){
+    if (e.key == "ArrowRight") {
+        changeSlide(1); 
+    }else if(e.key == "ArrowLeft"){
+        changeSlide(-1)
+    }else if(e.key == "Escape"){
+        close();
+    }
+})
